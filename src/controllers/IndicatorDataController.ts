@@ -24,7 +24,8 @@ export class IndicatorDataController {
 
       return res.status(200).json(indicators);
     } catch (error) {
-      return res.json(JSON.stringify(error));
+      console.log(error);
+      return res.status(500).json(JSON.stringify(error));
     }
   }
 }
