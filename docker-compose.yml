@@ -1,0 +1,27 @@
+# docker-compose.yml
+version: '3.9' 
+
+services:
+  postgres:
+    image: 'postgres'
+    ports:
+      - '5432:5432'
+    volumes:
+        - ./pg-init-scripts:/docker-entrypoint-initdb.d
+        - ./data:/app/data
+    environment:
+      POSTGRES_MULTIPLE_DATABASES: app,app_test
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    restart: unless-stopped
+  # app:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.dev
+  #   volumes:
+  #     - ./src:/app/src
+  #   ports:
+  #     - 4000:4000
+  #   depends_on:
+  #     - postgres
+
