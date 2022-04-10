@@ -23,7 +23,7 @@ export const AppDataSource = new DataSource({
   logging: true,
   entities: [IndicatorData],
   subscribers: [],
-  migrations: ["build/database/migrations/**/*{.js,.ts}"],
+  // migrations: ["build/database/migrations/**/*{.js,.ts}"],
   ssl: true,
   extra: {
     ssl: {
