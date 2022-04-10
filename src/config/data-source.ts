@@ -2,8 +2,13 @@ import "dotenv/config";
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 
-const { POSTGRES_HOST, POSTGRES_PORT, POSTGRES_USER, POSTGRES_PASSWORD } =
-  process.env;
+const {
+  POSTGRES_HOST,
+  POSTGRES_PORT,
+  POSTGRES_USER,
+  POSTGRES_PASSWORD,
+  POSTGRES_DATABASE,
+} = process.env;
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -11,7 +16,7 @@ export const AppDataSource = new DataSource({
   port: (POSTGRES_PORT as unknown as number) || 5432,
   username: POSTGRES_USER || "postgres",
   password: POSTGRES_PASSWORD || "postgres",
-  database: "app",
+  database: POSTGRES_DATABASE || "app",
   synchronize: false,
   logging: true,
   entities: [`src/models/*{.js,.ts}`],
