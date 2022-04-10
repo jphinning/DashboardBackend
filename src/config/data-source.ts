@@ -22,10 +22,10 @@ export const AppDataSource = new DataSource({
   entities: [__dirname + `/models/*{.js,.ts}`],
   subscribers: [],
   migrations: [__dirname + "/database/migrations/**/*{.js,.ts}"],
-  // ssl: true,
-  // extra: {
-  //   ssl: {
-  //     rejectUnauthorized: false,
-  //   },
-  // },
+  ssl: true,
+  extra: {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },
 });
