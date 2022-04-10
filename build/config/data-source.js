@@ -4,17 +4,18 @@ exports.AppDataSource = void 0;
 require("dotenv/config");
 require("reflect-metadata");
 const typeorm_1 = require("typeorm");
+const { POSTGRES_HOST, POSTGRES_PORT, POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DATABASE, } = process.env;
 exports.AppDataSource = new typeorm_1.DataSource({
     type: "postgres",
-    host: "localhost",
-    port: 5432,
-    username: "postgres",
-    password: "postgres",
-    database: "app",
+    host: POSTGRES_HOST || "localhost",
+    port: POSTGRES_PORT || 5432,
+    username: POSTGRES_USER || "postgres",
+    password: POSTGRES_PASSWORD || "postgres",
+    database: POSTGRES_DATABASE || "app",
     synchronize: false,
     logging: true,
-    entities: ["build/models/**/*{.js,.ts}"],
+    entities: [__dirname + `/models/*{.js,.ts}`],
     subscribers: [],
-    migrations: ["src/database/migrations/**/*{.js,.ts}"],
+    migrations: [__dirname + "/database/migrations/**/*{.js,.ts}"],
 });
 //# sourceMappingURL=data-source.js.map

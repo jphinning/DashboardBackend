@@ -19,13 +19,13 @@ export const AppDataSource = new DataSource({
   database: POSTGRES_DATABASE || "app",
   synchronize: false,
   logging: true,
-  entities: [`src/models/*{.js,.ts}`],
+  entities: [__dirname + `/models/*{.js,.ts}`],
   subscribers: [],
-  migrations: ["src/database/migrations/**/*{.js,.ts}"],
-  ssl: true,
-  extra: {
-    ssl: {
-      rejectUnauthorized: false,
-    },
-  },
+  migrations: [__dirname + "/database/migrations/**/*{.js,.ts}"],
+  // ssl: true,
+  // extra: {
+  //   ssl: {
+  //     rejectUnauthorized: false,
+  //   },
+  // },
 });
