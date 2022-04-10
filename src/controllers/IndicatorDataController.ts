@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { Between } from "typeorm";
 
 import { AppDataSource } from "../config/data-source";
 import { IndicatorData } from "../models/IndicatorDataEntity";
@@ -6,6 +7,8 @@ import { IndicatorData } from "../models/IndicatorDataEntity";
 interface IReqProps {
   limit: string;
   order: "ASC" | "DESC";
+  initialDate: Date;
+  lastDate: Date;
 }
 
 export class IndicatorDataController {
@@ -13,9 +16,15 @@ export class IndicatorDataController {
     try {
       const repository = AppDataSource.getRepository(IndicatorData);
 
-      const { limit, order } = req.query as unknown as IReqProps;
+      const { limit, order, initialDate, lastDate } =
+        req.query as unknown as IReqProps;
 
       const indicators = await repository.find({
+        where: [
+          {
+            data: Between(initialDate, lastDate),
+          },
+        ],
         order: {
           id: order,
         },
