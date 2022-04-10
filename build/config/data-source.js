@@ -4,6 +4,7 @@ exports.AppDataSource = void 0;
 require("dotenv/config");
 require("reflect-metadata");
 const typeorm_1 = require("typeorm");
+const IndicatorDataEntity_1 = require("../models/IndicatorDataEntity");
 const { POSTGRES_HOST, POSTGRES_PORT, POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DATABASE, } = process.env;
 exports.AppDataSource = new typeorm_1.DataSource({
     type: "postgres",
@@ -14,8 +15,8 @@ exports.AppDataSource = new typeorm_1.DataSource({
     database: POSTGRES_DATABASE || "app",
     synchronize: false,
     logging: true,
-    entities: [__dirname + `/models/*{.js,.ts}`],
+    entities: [IndicatorDataEntity_1.IndicatorData],
     subscribers: [],
-    migrations: [__dirname + "/database/migrations/**/*{.js,.ts}"],
+    migrations: ["build/database/migrations/**/*{.js,.ts}"],
 });
 //# sourceMappingURL=data-source.js.map

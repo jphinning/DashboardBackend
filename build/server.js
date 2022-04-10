@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 4000;
 const start = async () => {
     await data_source_1.AppDataSource.initialize();
     await data_source_1.AppDataSource.runMigrations();
+    console.log(`Migrations done`);
     app_1.default.listen(PORT, () => {
         console.log(`Server running on: ${PORT}`);
     });
