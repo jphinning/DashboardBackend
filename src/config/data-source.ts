@@ -24,10 +24,10 @@ export const AppDataSource = new DataSource({
   entities: [IndicatorData],
   subscribers: [],
   migrations: ["build/database/migrations/**/*{.js,.ts}"],
-  // ssl: true,
-  // extra: {
-  //   ssl: {
-  //     rejectUnauthorized: false,
-  //   },
-  // },
+  ssl: true,
+  extra: {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },
 });
