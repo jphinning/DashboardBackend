@@ -4,6 +4,6 @@ import indicatorRouter from "./indicatorRoutes";
 
 const router = Router();
 
-router.use("/indicators", indicatorRouter);
+router.use("/api/v1/data", indicatorRouter);
 
 export default router;
